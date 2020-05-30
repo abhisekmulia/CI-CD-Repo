@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: true
+  connection: local
+  #vars_files:
+    #- file.yml
+  tasks:
+    - name: launching ec2
+      ec2:
+        #aws_access_key: "{{ Access_key_ID }}"
+        #aws_secret_key: "{{ Secret_access_key }}" 
+        instance_type: t2.micro 
+        image: ami-01d025118d8e760db
+        count: 1
+        vpc_subnet_id: subnet-e2870eaf
+        wait: yes
+        assign_public_ip: yes
+
